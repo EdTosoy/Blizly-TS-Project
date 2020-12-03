@@ -1,11 +1,11 @@
-.auth {
+.register {
   background-color: #f0f0f0;
   display: grid;
   place-content: center;
   padding: 5rem 0;
 }
 
-.auth-content {
+.register-content {
   a {
     color: #139eb9;
   }
@@ -56,8 +56,11 @@
     .right {
       margin-top: 1.5rem;
       p {
-        margin-top: 2rem;
+        margin: 0.8rem 0;
         color: gray;
+      }
+      .agreement {
+        font-size: 0.9rem;
       }
 
       .facebook-btn,

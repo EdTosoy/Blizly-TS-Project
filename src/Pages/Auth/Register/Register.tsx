@@ -1,19 +1,27 @@
 import React from "react";
 
-import "./Auth.scss";
+import "./Register.scss";
 
-export default function Auth() {
+export default function Register() {
   return (
-    <div className="auth">
-      <div className="auth-content">
+    <div className="register">
+      <div className="register-content">
         <div className="text">
-          <h2>Welcome to Blizly, Please login.</h2>
+          <h2>Create Your Blizly Account</h2>
           <p>
-            New member? <a href="/register">Register</a> here.
+            Already member? <a href="/auth">Log in</a> here.
           </p>
         </div>
         <form>
           <div className="left">
+            <div className="row">
+              <label>First Name*</label>
+              <input
+                type="text"
+                placeholder="Please Enter Your First Name"
+                required={true}
+              />
+            </div>
             <div className="row">
               <label>Phone Number or Email*</label>
               <input
@@ -30,13 +38,15 @@ export default function Auth() {
                 required={true}
               />
             </div>
-            <p>
-              <a href="/auth">Forget password?</a>
-            </p>
           </div>
           <div className="right">
-            <button className="btn-primary">Log In</button>
-            <p>Or, Log in with</p>
+            <button className="btn-primary">Sign up</button>
+            <p className="agreement">
+              By clicking “SIGN UP”, I agree to Blizly’s
+              <a href="/register"> Terms of Use </a> and
+              <a href="/register"> Privacy Plicy</a>
+            </p>
+            <p>Or, Sign Up with</p>
             <button className="facebook-btn">Facebook</button>
             <button className="google-btn">Google</button>
           </div>
