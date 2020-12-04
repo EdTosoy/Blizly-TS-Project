@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import productdata from "./productdata.json";
 
-import "./MainShowcase.scss";
+import "./MainShowCase.scss";
 export default function MainShowcase() {
   interface ParamTypes {
     category: string;
