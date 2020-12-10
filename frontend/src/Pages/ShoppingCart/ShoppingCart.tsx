@@ -1,4 +1,5 @@
 import React from "react";
+import CartItems from "./CartItems";
 
 import "./ShoppingCart.scss";
 
@@ -8,10 +9,7 @@ export default function ShoppingCart() {
       <div className="shopping-cart-content">
         <div className="cart-items">
           <h2>Your Cart</h2>
-          <div className="cart-center">
-            <h2>There's no item in this Cart</h2>
-            <p>Try to login your account.</p>
-          </div>
+          <CartItems />
         </div>
         <div className="cart-summary">
           <h2>Cart Summary</h2>
