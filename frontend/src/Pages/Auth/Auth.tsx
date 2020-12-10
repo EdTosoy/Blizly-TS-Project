@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./Auth.scss";
+import { useLoginMutation } from "../../generated/graphql";
+import { useHistory } from "react-router-dom";
 
 export default function Auth() {
+  let history = useHistory();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [login, { error }] = useLoginMutation();
+  if (error) {
+    console.log(error);
+  }
   return (
     <div className="auth">
       <div className="auth-content">
@@ -12,14 +21,34 @@ export default function Auth() {
             New member? <a href="/register">Register</a> here.
           </p>
         </div>
-        <form>
+        <form
+          onSubmit={async (e) => {
+            e.preventDefault();
+            try {
+              await login({
+                variables: {
+                  password,
+                  username,
+                },
+              });
+              history.push("/");
+              window.location.reload();
+            } catch (error) {
+              console.error(error);
+            }
+          }}
+        >
           <div className="left">
+            {error && <div className="error">{error.message}</div>}
             <div className="row">
-              <label>Phone Number or Email*</label>
+              <label>Username*</label>
               <input
                 type="text"
-                placeholder="Please Enter Your Number or Email"
+                placeholder="Please Enter Your Username"
                 required={true}
+                onChange={(e) => {
+                  setUsername(e.target.value);
+                }}
               />
             </div>
             <div className="row">
@@ -28,6 +57,9 @@ export default function Auth() {
                 type="password"
                 placeholder="Please Enter Your Password"
                 required={true}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
               />
             </div>
             <p>

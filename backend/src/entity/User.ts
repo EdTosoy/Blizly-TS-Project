@@ -15,15 +15,11 @@ export class User extends BaseEntity {
   id: number;
 
   @Field()
-  @Column()
-  email: string;
-
-  @Field()
-  @Column()
+  @Column({ nullable: true })
   username: string;
 
   @Field()
-  @Column()
+  @Column({ nullable: true })
   password: string;
 
   @OneToMany(() => CartList, (cartList: CartList) => cartList.user, {

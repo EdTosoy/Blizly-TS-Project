@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./Register.scss";
+import { useRegisterMutation } from "../../../generated/graphql";
+import { useHistory } from "react-router-dom";
 
 export default function Register() {
+  let history = useHistory();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+
+  const [register, { error }] = useRegisterMutation();
   return (
     <div className="register">
       <div className="register-content">
@@ -12,22 +20,45 @@ export default function Register() {
             Already member? <a href="/auth">Log in</a> here.
           </p>
         </div>
-        <form>
+        <form
+          onSubmit={async (e) => {
+            e.preventDefault();
+            try {
+              await register({
+                variables: {
+                  password,
+                  username,
+                },
+              });
+              history.push("/auth");
+              window.location.reload();
+            } catch (error) {
+              console.error(error);
+            }
+          }}
+        >
           <div className="left">
+            {error && <div className="error">{error.message}</div>}
             <div className="row">
-              <label>First Name*</label>
+              <label>Username*</label>
               <input
                 type="text"
-                placeholder="Please Enter Your First Name"
+                placeholder="Please Enter Your Username"
                 required={true}
+                onChange={(e) => {
+                  setUsername(e.target.value);
+                }}
               />
             </div>
             <div className="row">
               <label>Phone Number or Email*</label>
               <input
-                type="text"
+                type="email"
                 placeholder="Please Enter Your Number or Email"
                 required={true}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
               />
             </div>
             <div className="row">
@@ -36,6 +67,9 @@ export default function Register() {
                 type="password"
                 placeholder="Please Enter Your Password"
                 required={true}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
               />
             </div>
           </div>

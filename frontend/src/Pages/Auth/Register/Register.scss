@@ -35,6 +35,11 @@
     width: 800px;
     justify-content: space-between;
 
+    .error {
+      color: crimson;
+      text-align: right;
+    }
+
     .left {
       .row {
         margin-bottom: 2rem;

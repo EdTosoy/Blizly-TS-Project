@@ -14,6 +14,11 @@ export default function MainShowcase() {
     price: string;
   }
   let { category } = useParams<ParamTypes>();
+
+  if (!productdata[category]) {
+    category = "clothings";
+  }
+
   const productDataOnSelectectedCategory = productdata[category];
   return (
     <div className="main-showcase">

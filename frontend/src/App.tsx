@@ -10,25 +10,29 @@ import Shopping from "./Pages/Shopping/Shopping";
 import Header from "./Component/Header/Header";
 import CopyRight from "./Component/CopyRight/CopyRight";
 import Footer from "./Component/Footer/Footer";
+import { ApolloProvider } from "@apollo/client";
+import { client } from "./index";
 
 function App() {
   return (
-    <MenuProvider>
-      <div className="app">
-        <Router>
-          <Header />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/cart" component={ShoppingCart} />
-            <Route exact path="/auth" component={Auth} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/shopping/:category" component={Shopping} />
-          </Switch>
-          <Footer />
-          <CopyRight />
-        </Router>
-      </div>
-    </MenuProvider>
+    <ApolloProvider client={client}>
+      <MenuProvider>
+        <div className="app">
+          <Router>
+            <Header />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/cart" component={ShoppingCart} />
+              <Route exact path="/auth" component={Auth} />
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/shopping/:category" component={Shopping} />
+            </Switch>
+            <Footer />
+            <CopyRight />
+          </Router>
+        </div>
+      </MenuProvider>
+    </ApolloProvider>
   );
 }
 
