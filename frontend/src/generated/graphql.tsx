@@ -13,21 +13,21 @@ export type Scalars = {
   Float: number;
 };
 
-export type User = {
-  __typename?: 'User';
-  id: Scalars['Float'];
-  email: Scalars['String'];
-  username: Scalars['String'];
-  password: Scalars['String'];
-};
-
 export type CartList = {
   __typename?: 'CartList';
-  id: Scalars['Float'];
-  name: Scalars['String'];
-  url: Scalars['String'];
-  price: Scalars['String'];
-  username: Scalars['String'];
+  id?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']>;
+  price?: Maybe<Scalars['String']>;
+  username?: Maybe<Scalars['String']>;
+};
+
+export type User = {
+  __typename?: 'User';
+  id?: Maybe<Scalars['Int']>;
+  email?: Maybe<Scalars['String']>;
+  username?: Maybe<Scalars['String']>;
+  password?: Maybe<Scalars['String']>;
 };
 
 export type LoginResponse = {

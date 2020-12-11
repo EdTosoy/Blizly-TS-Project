@@ -15,7 +15,15 @@ interface ProductTypes {
   price: string;
 }
 export default function MainShowcase() {
+  const { data } = useMeQuery();
   const [addToCart] = useAddToCartMutation();
+
+  let username: string;
+  if (data?.me?.username) {
+    username = data.me.username;
+  } else {
+    username = " ";
+  }
 
   let { category } = useParams<ParamTypes>();
 
@@ -38,7 +46,7 @@ export default function MainShowcase() {
                   variables: {
                     name,
                     price,
-                    username: "cjay",
+                    username: username!,
                   },
                 });
               } catch (error) {

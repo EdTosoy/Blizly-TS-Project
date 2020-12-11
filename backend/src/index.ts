@@ -1,3 +1,5 @@
+import "reflect-metadata";
+import express from "express";
 import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
 import { createConnection } from "typeorm";
@@ -7,10 +9,10 @@ import { User } from "./entity/User";
 import { createAccessToken, createRefreshToken } from "./Auth";
 import { sendRefreshToken } from "./sendRefreshToken";
 import cors from "cors";
-import express from "express";
 
-const main = async () => {
+(async () => {
   const app = express();
+
   app.use(
     cors({
       origin: "http://localhost:3000",
@@ -21,7 +23,6 @@ const main = async () => {
   app.get("/", (_, res) => {
     res.send("hello");
   });
-
   app.use(cookieParser());
   app.post("/refresh_token", async (req, res) => {
     console.log(req.cookies);
@@ -59,11 +60,10 @@ const main = async () => {
     }),
     context: ({ req, res }) => ({ req, res }),
   });
+
   apolloServer.applyMiddleware({ app, cors: false });
+
   app.listen({ port: process.env.PORT || 4000 }, () => {
     console.log("server started at http://localhost:4000/graphql");
   });
-};
-main().catch((err) => {
-  console.error(err);
-});
+})();

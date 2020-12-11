@@ -1,36 +1,35 @@
-import { Field, ObjectType } from "type-graphql";
 import {
-  BaseEntity,
-  Column,
   Entity,
-  JoinColumn,
-  ManyToOne,
   PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  BaseEntity,
+  JoinColumn,
 } from "typeorm";
 import { User } from "./User";
+import { Field, ObjectType, Int } from "type-graphql";
 
 @ObjectType()
-@Entity()
+@Entity("cartlist")
 export class CartList extends BaseEntity {
-  @Field()
+  @Field(() => Int, { nullable: true })
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Field()
-  @Column()
+  @Field({ nullable: true })
+  @Column({ nullable: true })
   name: string;
-  @Field()
-  @Column()
+
+  @Field({ nullable: true })
+  @Column({ nullable: true })
   url: string;
 
-  @Field()
-  @Column()
+  @Field({ nullable: true })
+  @Column({ nullable: true })
   price: string;
-
-  @Field()
-  @Column()
+  @Field({ nullable: true })
+  @Column({ nullable: true })
   username: string;
-
   @ManyToOne(() => User, (user: User) => user.cartList)
   @JoinColumn({ name: "user_id" })
   user: User;

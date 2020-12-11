@@ -1,3 +1,4 @@
+import { Field, Int, ObjectType } from "type-graphql";
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -5,20 +6,24 @@ import {
   BaseEntity,
   OneToMany,
 } from "typeorm";
-import { Field, ObjectType } from "type-graphql";
 import { CartList } from "./CartList";
+
 @ObjectType()
-@Entity({ name: "users" })
+@Entity("users")
 export class User extends BaseEntity {
-  @Field()
+  @Field(() => Int, { nullable: true })
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Field()
+  @Field({ nullable: true })
+  @Column({ nullable: true })
+  email: string;
+
+  @Field({ nullable: true })
   @Column({ nullable: true })
   username: string;
 
-  @Field()
+  @Field({ nullable: true })
   @Column({ nullable: true })
   password: string;
 

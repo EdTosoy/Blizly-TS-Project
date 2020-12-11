@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "./Auth.scss";
 import { useLoginMutation } from "../../generated/graphql";
 import { useHistory } from "react-router-dom";
+import { setAccessToken } from "src/accessToken";
 
 export default function Auth() {
   let history = useHistory();
@@ -23,14 +24,17 @@ export default function Auth() {
         </div>
         <form
           onSubmit={async (e) => {
-            e.preventDefault();
             try {
-              await login({
+              e.preventDefault();
+              const response = await login({
                 variables: {
                   password,
                   username,
                 },
               });
+              if (response && response.data) {
+                setAccessToken(response.data.login.accessToken);
+              }
               history.push("/");
               window.location.reload();
             } catch (error) {
