@@ -5,3 +5,4 @@ export const sendRefreshToken = (res: Response, token: string) => {
     path: "/refresh_token",
   });
 };
+  
