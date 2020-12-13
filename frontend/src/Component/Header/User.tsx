@@ -33,19 +33,19 @@ export default function User() {
 
   return (
     <div className="user">
-      <Link to="/cart">
+      <a href="/cart">
         <div className="cart">
           <ion-icon name="cart-outline"></ion-icon>
           {cartLength ? <div className="circle"></div> : " "}
         </div>
-      </Link>
-      <Link to="/auth">
+      </a>
+      <a href="/auth">
         {data?.me! === null ? (
           <ion-icon name="person-outline"></ion-icon>
         ) : (
           <ion-icon name="exit-outline" onClick={handleLogout}></ion-icon>
         )}
-      </Link>
+      </a>
       <div onClick={handleClick} className="menu">
         <ion-icon name="grid-outline"></ion-icon>
         <MenuPanel menuOpen={menuOpen} />
