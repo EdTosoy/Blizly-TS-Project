@@ -11,8 +11,9 @@
       background-color: white;
       background-position: center;
       background-size: cover;
+      border-radius: 4px;
       &:hover {
-        border: 7px solid #c4c4c4;
+        box-shadow: 0px 5px 9px -3px black;
       }
       .description {
         max-width: 150px;
