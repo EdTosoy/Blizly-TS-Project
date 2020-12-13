@@ -12,6 +12,12 @@
     height: 400px !important;
   }
 }
+
+@media (max-width: 700px) {
+  .new-arrivals .card {
+    height: 300px !important;
+  }
+}
 @media (max-width: 600px) {
   .menu {
     display: block !important;
@@ -76,6 +82,14 @@
   .auth-content .text {
     display: block !important;
     text-align: center !important;
+  }
+  .new-arrivals {
+    .card {
+      height: auto !important;
+    }
+    .product-info {
+      display: none !important;
+    }
   }
 }
 @media (max-width: 400px) {
