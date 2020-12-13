@@ -47,6 +47,7 @@ export default function MainShowcase() {
                     name,
                     price,
                     username: username!,
+                    url,
                   },
                 });
               } catch (error) {

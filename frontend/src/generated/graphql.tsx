@@ -55,6 +55,7 @@ export type Mutation = {
 
 
 export type MutationAddToCartArgs = {
+  url: Scalars['String'];
   username: Scalars['String'];
   price: Scalars['String'];
   name: Scalars['String'];
@@ -82,6 +83,7 @@ export type AddToCartMutationVariables = Exact<{
   username: Scalars['String'];
   price: Scalars['String'];
   name: Scalars['String'];
+  url: Scalars['String'];
 }>;
 
 
@@ -169,8 +171,8 @@ export type UsersQuery = (
 
 
 export const AddToCartDocument = gql`
-    mutation AddToCart($username: String!, $price: String!, $name: String!) {
-  addToCart(username: $username, price: $price, name: $name)
+    mutation AddToCart($username: String!, $price: String!, $name: String!, $url: String!) {
+  addToCart(username: $username, price: $price, name: $name, url: $url)
 }
     `;
 export type AddToCartMutationFn = Apollo.MutationFunction<AddToCartMutation, AddToCartMutationVariables>;
@@ -191,6 +193,7 @@ export type AddToCartMutationFn = Apollo.MutationFunction<AddToCartMutation, Add
  *      username: // value for 'username'
  *      price: // value for 'price'
  *      name: // value for 'name'
+ *      url: // value for 'url'
  *   },
  * });
  */

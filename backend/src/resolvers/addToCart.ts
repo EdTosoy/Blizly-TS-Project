@@ -7,7 +7,8 @@ export class AddToCart {
   async addToCart(
     @Arg("name") name: string,
     @Arg("price") price: string,
-    @Arg("username") username: string
+    @Arg("username") username: string,
+    @Arg("url") url: string
   ) {
     const productExist = await CartList.find({ where: { name, username } });
     if (productExist.length !== 0) {
@@ -18,6 +19,7 @@ export class AddToCart {
         name,
         price,
         username,
+        url,
       });
     } catch (error) {
       console.error(error);
