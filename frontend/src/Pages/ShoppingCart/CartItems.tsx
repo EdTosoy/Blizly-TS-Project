@@ -6,7 +6,6 @@ export default function CartItems(): ReactElement {
   const { data } = useCartListQuery();
   const [removeFromCart] = useRemoveFromCartMutation();
   const username = useMeQuery().data?.me?.username;
-  console.log(data);
   if (data?.cartList === null || data?.cartList?.length === 0) {
     return (
       <div className="cart-center">
