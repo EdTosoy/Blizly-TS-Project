@@ -74,7 +74,9 @@ export default function Register() {
             </div>
           </div>
           <div className="right">
-            <button className="btn-primary">Sign up</button>
+            <button className="btn-primary" type="submit">
+              Sign up
+            </button>
             <p className="agreement">
               By clicking “SIGN UP”, I agree to Blizly’s
               <a href="/register"> Terms of Use </a> and

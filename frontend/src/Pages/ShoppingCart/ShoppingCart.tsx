@@ -1,5 +1,6 @@
 import React from "react";
 import CartItems from "./CartItems";
+import CartSummary from "./CartSummary";
 
 import "./ShoppingCart.scss";
 
@@ -13,17 +14,7 @@ export default function ShoppingCart() {
         </div>
         <div className="cart-summary">
           <h2>Cart Summary</h2>
-          <div className="row">
-            <input type="text" placeholder="Shop Voucher" />
-            <button>Submit</button>
-          </div>
-          <div className="row">
-            <p>Quantity : 0 items</p>
-            <p>Total : $0 </p>
-          </div>
-          <button className="btn-primary">
-            <a href="/auth">Proceed to Payment</a>
-          </button>
+          <CartSummary />
         </div>
       </div>
     </div>

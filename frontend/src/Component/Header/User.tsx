@@ -26,7 +26,7 @@ export default function User() {
     await logout();
     setAccessToken("");
     await client.resetStore();
-    history.push("/user/SignIn");
+    history.push("/auth");
     window.location.reload();
   };
 
