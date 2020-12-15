@@ -3,25 +3,27 @@
   
 </h1>
 <p align="center">
-Modern looking E-commerce website, Blizly offers an extensive range of clothing products with a wide variety of design and choice of materials and finishes. It is built with React.js, React Router, SCSS(CSS), Firebase as Back-End, Webpack as bundler.
+Modern looking E-commerce website, Blizly offers an extensive range of clothing products with a wide variety of design and choice of materials and finishes. It is built with React.js, TypeScript, Apollo, Express, GraphQL, Postgres, and Firebase and Heroku for deployment.
 </p>
 
-![demo](https://github.com/EdTosoy/Blizly-Project/blob/master/Demo.png?raw=true)y
+![demo](https://github.com/EdTosoy/Blizly-Project/blob/master/Demo.png?raw=true)
 
 ## Built With
 
 - React.js
-- React Router Dom
-- SCSS(CSS)
-- Firebase
-- Webpack
+- TypeScript
+- Apollo
+- Express
+- GraphQl
+- PostgreSQL
+- FireBase and Heroku
 
 ## Installation & Setup
 
 1. Clone the Repository
 
    ```sh
-   git clone git@github.com:EdTosoy/Blizly-Project.git
+   git clone git@github.com:EdTosoy/Blizly-TS-Project.git
    ```
 
 2. Install node modules and Dependencies
@@ -63,9 +65,14 @@ Modern looking E-commerce website, Blizly offers an extensive range of clothing 
 ## Dependencies
 
 - React.js
-- React Router Dom
-- Node-sass
-- Webpack
+- TypeScript
+- Apollo
+- Express
+- GraphQl
+- PostgreSQL
+- JWT
+- TypeORM
+- TypeGrahpQL
 
 ## Screen Shots
 

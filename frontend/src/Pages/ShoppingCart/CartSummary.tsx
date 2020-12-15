@@ -1,15 +1,12 @@
 import React, { ReactElement } from "react";
 import { useCartListQuery } from "../../generated/graphql";
 
-interface Props {}
-
-export default function CartSummary({}: Props): ReactElement {
+export default function CartSummary(): ReactElement {
   const { data } = useCartListQuery();
   const numberOfItems = data?.cartList?.length;
   let total: number = 0;
-  data?.cartList?.map(({ price }) => {
-    total += parseInt(price!);
-  });
+  data?.cartList?.map(({ price }) => (total += parseInt(price!)));
+
   return (
     <>
       <div className="row">
