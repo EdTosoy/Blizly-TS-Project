@@ -1,12 +1,16 @@
 import React, { ReactElement } from "react";
 import { useCartListQuery } from "../../generated/graphql";
+interface Props {
+  setCheckOutPage: React.Dispatch<React.SetStateAction<boolean>>;
+  numberOfItems: number | undefined;
+  total: number;
+}
 
-export default function CartSummary(): ReactElement {
-  const { data } = useCartListQuery();
-  const numberOfItems = data?.cartList?.length;
-  let total: number = 0;
-  data?.cartList?.map(({ price }) => (total += parseInt(price!)));
-
+export default function CartSummary({
+  setCheckOutPage,
+  numberOfItems,
+  total,
+}: Props): ReactElement {
   return (
     <>
       <div className="row">
@@ -21,8 +25,13 @@ export default function CartSummary(): ReactElement {
           Total : <span>${total} </span>
         </p>
       </div>
-      <button className="btn-primary">
-        <a href="/auth">Proceed to Payment</a>
+      <button
+        className="btn-primary"
+        onClick={() => {
+          setCheckOutPage(true);
+        }}
+      >
+        Proceed to Payment
       </button>
     </>
   );

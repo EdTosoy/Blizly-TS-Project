@@ -47,6 +47,7 @@ export type Query = {
 export type Mutation = {
   __typename?: 'Mutation';
   addToCart: Scalars['Boolean'];
+  charge: Scalars['Boolean'];
   login: LoginResponse;
   logout: Scalars['Boolean'];
   register: Scalars['Boolean'];
@@ -59,6 +60,12 @@ export type MutationAddToCartArgs = {
   username: Scalars['String'];
   price: Scalars['String'];
   name: Scalars['String'];
+};
+
+
+export type MutationChargeArgs = {
+  amount: Scalars['Float'];
+  id: Scalars['String'];
 };
 
 
@@ -101,6 +108,17 @@ export type CartListQuery = (
     { __typename?: 'CartList' }
     & Pick<CartList, 'id' | 'name' | 'url' | 'price' | 'username'>
   )>> }
+);
+
+export type ChargeMutationVariables = Exact<{
+  amount: Scalars['Float'];
+  id: Scalars['String'];
+}>;
+
+
+export type ChargeMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'charge'>
 );
 
 export type LoginMutationVariables = Exact<{
@@ -239,6 +257,37 @@ export function useCartListLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<C
 export type CartListQueryHookResult = ReturnType<typeof useCartListQuery>;
 export type CartListLazyQueryHookResult = ReturnType<typeof useCartListLazyQuery>;
 export type CartListQueryResult = Apollo.QueryResult<CartListQuery, CartListQueryVariables>;
+export const ChargeDocument = gql`
+    mutation Charge($amount: Float!, $id: String!) {
+  charge(amount: $amount, id: $id)
+}
+    `;
+export type ChargeMutationFn = Apollo.MutationFunction<ChargeMutation, ChargeMutationVariables>;
+
+/**
+ * __useChargeMutation__
+ *
+ * To run a mutation, you first call `useChargeMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useChargeMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [chargeMutation, { data, loading, error }] = useChargeMutation({
+ *   variables: {
+ *      amount: // value for 'amount'
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useChargeMutation(baseOptions?: Apollo.MutationHookOptions<ChargeMutation, ChargeMutationVariables>) {
+        return Apollo.useMutation<ChargeMutation, ChargeMutationVariables>(ChargeDocument, baseOptions);
+      }
+export type ChargeMutationHookResult = ReturnType<typeof useChargeMutation>;
+export type ChargeMutationResult = Apollo.MutationResult<ChargeMutation>;
+export type ChargeMutationOptions = Apollo.BaseMutationOptions<ChargeMutation, ChargeMutationVariables>;
 export const LoginDocument = gql`
     mutation Login($password: String!, $username: String!) {
   login(password: $password, username: $username) {

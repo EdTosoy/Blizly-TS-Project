@@ -114,6 +114,9 @@
       display: flex;
       justify-content: space-between;
       margin: 1rem 0;
+      p {
+        font-size: 1em;
+      }
       input {
         flex-grow: 1;
         font-size: 1.2rem;
@@ -127,6 +130,10 @@
         background-color: #00052e;
         padding: 5px 1rem;
       }
+    }
+
+    .card-element {
+      margin: 1rem 0;
     }
   }
 }
