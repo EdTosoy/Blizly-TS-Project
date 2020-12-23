@@ -42,23 +42,29 @@ Modern looking E-commerce website, Blizly offers an extensive range of clothing 
 
    ```sh
    npm start
+   cd frontend
+   npm start
    ```
 
    > or
 
    ```sh
    yarn start
+   cd frontend
+   yarn start
    ```
 
 4. For Production just type the command
 
    ```sh
+   cd frontend
    npm build
    ```
 
    > or
 
    ```sh
+   cd frontend
    yarn build
    ```
 
