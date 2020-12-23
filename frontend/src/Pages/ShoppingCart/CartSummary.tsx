@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import { useCartListQuery } from "../../generated/graphql";
+import { useMeQuery } from "../../generated/graphql";
 interface Props {
   setCheckOutPage: React.Dispatch<React.SetStateAction<boolean>>;
   numberOfItems: number | undefined;
@@ -11,6 +11,8 @@ export default function CartSummary({
   numberOfItems,
   total,
 }: Props): ReactElement {
+  const me = useMeQuery();
+
   return (
     <>
       <div className="row">
@@ -28,7 +30,9 @@ export default function CartSummary({
       <button
         className="btn-primary"
         onClick={() => {
-          setCheckOutPage(true);
+          if (me.data?.me?.username) {
+            setCheckOutPage(true);
+          }
         }}
       >
         Proceed to Payment

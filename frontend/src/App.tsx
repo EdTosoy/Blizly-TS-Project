@@ -5,7 +5,7 @@ import Routes from "./Routes";
 export default function App(): ReactElement {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("https://blizly.herokuapp.com/refresh_token", {
+    fetch("http://localhost:4000/refresh_token", {
       method: "POST",
       credentials: "include",
     }).then(async (x) => {
