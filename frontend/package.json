@@ -2,6 +2,7 @@
   "name": "blizly-ts-project",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://blizly.herokuapp.com",
   "dependencies": {
     "@apollo/client": "^3.3.4",
     "@stripe/react-stripe-js": "^1.1.2",

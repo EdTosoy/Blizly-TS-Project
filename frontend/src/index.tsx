@@ -22,7 +22,7 @@ const authLink = setContext((_, { headers }) => {
   }
 });
 const httpLink = createHttpLink({
-  uri: "http://localhost:4000/graphql",
+  uri: "https://blizly.herokuapp.com/graphql",
   credentials: "include",
 });
 
